@@ -1,0 +1,104 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Yunji Systems — AI, Network & Infrastructure Engineering</title>
+  <meta name="description" content="김윤지의 기술 블로그. Network AI, AI Systems, Infrastructure, ML Platform, Distributed Systems 경험을 실제 시스템과 문제 해결 중심으로 기록합니다." />
+  <link rel="stylesheet" href="/styles.css" />
+</head>
+<body>
+<header class="topbar">
+  <a class="brand" href="/">YUNJI <span>SYSTEMS</span></a>
+  <nav>
+    <a href="#systems">Systems</a><a href="#writing">Writing</a><a href="#topics">Topics</a><a href="https://wendyunji-resume.vercel.app" target="_blank">Resume ↗</a>
+  </nav>
+</header>
+<main>
+  <section class="hero shell">
+    <div class="hero-copy">
+      <p class="eyebrow">ENGINEERING NOTES · 2026</p>
+      <h1>복잡한 시스템을<br><em>관찰하고, 연결하고, 단순하게.</em></h1>
+      <p class="lead">네트워크 운영, AI 시스템, Kubernetes/GPU 인프라, 분산 시스템을 실제 문제와 시스템 화면 중심으로 기록합니다. 특정 기술보다 <strong>왜 문제가 생겼고 무엇을 바꿨는지</strong>를 남깁니다.</p>
+      <div class="hero-actions"><a class="btn primary" href="#writing">글 읽기</a><a class="btn" href="#systems">시스템 보기</a></div>
+    </div>
+    <div class="hero-console" aria-label="Yunji Systems overview console">
+      <div class="console-top"><span>YUNJI SYSTEMS / LIVE OVERVIEW</span><span class="status">● ONLINE</span></div>
+      <div class="console-kpis">
+        <div><small>NETWORK PATTERNS</small><b>1,291</b><span>from 2.19M syslogs</span></div>
+        <div><small>BUILD TIME</small><b>−74.9%</b><span>Kaniko cache</span></div>
+        <div><small>10 GPU SCALE</small><b>6.92×</b><span>NCCL/TCP</span></div>
+        <div><small>FOCUS</small><b>OPS + AI</b><span>current work</span></div>
+      </div>
+      <div class="console-grid">
+        <div class="panel wide">
+          <div class="panel-title">Realtime System Signals</div>
+          <div class="signal"><i class="sev critical"></i><b>Network</b><span>Repeated syslog pattern detected</span><time>08:14</time></div>
+          <div class="signal"><i class="sev major"></i><b>Quality</b><span>CEI degradation candidate found</span><time>08:11</time></div>
+          <div class="signal"><i class="sev info"></i><b>AI Ops</b><span>Related work / failure context linked</span><time>08:07</time></div>
+          <div class="signal"><i class="sev info"></i><b>Platform</b><span>GPU workload healthy · queue 0</span><time>07:58</time></div>
+        </div>
+        <div class="panel">
+          <div class="panel-title">Engineering Loop</div>
+          <div class="loop"><span>OBSERVE</span><b>→</b><span>MODEL</span><b>→</b><span>BUILD</span><b>→</b><span>VERIFY</span></div>
+          <div class="spark"><i style="height:28%"></i><i style="height:50%"></i><i style="height:38%"></i><i style="height:78%"></i><i style="height:62%"></i><i style="height:92%"></i><i style="height:70%"></i></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section shell" id="systems">
+    <div class="section-head"><p class="eyebrow">SYSTEMS I HAVE BUILT / OPERATED</p><h2>화면이 있는 시스템으로<br>내가 했던 일을 보여줍니다.</h2><p>현재 업무는 Network AI·운영 자동화, 이전 업무는 AI Infrastructure·MLOps였습니다. 둘 중 하나로 정체성을 제한하지 않고, 시스템 문제를 다뤄온 흐름으로 정리합니다.</p></div>
+    <div class="system-grid">
+      <article class="system-card blue">
+        <div class="card-meta"><span>CURRENT · NETWORK AI</span><b>01</b></div>
+        <h3>Network Sentinel</h3><p>대규모 Syslog를 Pattern으로 구조화하고, 작업·장애·조치 이력을 연결해 운영자의 탐색 범위를 줄이는 시스템.</p>
+        <div class="mini-ui dark">
+          <div class="mini-head">SENTINEL / OPERATIONS</div>
+          <div class="mini-kpis"><span><small>Critical</small><b>8</b></span><span><small>Major</small><b>23</b></span><span><small>Pattern</small><b>1,291</b></span></div>
+          <div class="mini-table"><i></i><i></i><i></i><i></i></div>
+        </div>
+        <div class="tags"><span>Network Operations</span><span>Drain3</span><span>LLM Agent</span><span>FastAPI</span></div>
+        <a class="text-link" href="/posts/network-sentinel.html">Case note 읽기 →</a>
+      </article>
+      <article class="system-card mint">
+        <div class="card-meta"><span>AI INFRASTRUCTURE</span><b>02</b></div>
+        <h3>ML Platform Console</h3><p>Build → Release → Instance → GPU Scheduling → Observability를 Kubernetes API로 연결한 내부 플랫폼 경험.</p>
+        <div class="mini-ui light">
+          <div class="mini-head">WORKLOAD / BUILD PIPELINE</div>
+          <div class="pipe"><span>API</span><b>→</b><span>KANIKO</span><b>→</b><span>HARBOR</span><b>→</b><span>K8S</span></div>
+          <div class="meter"><i style="width:74.9%"></i></div><small>Build time improvement · 74.9%</small>
+        </div>
+        <div class="tags"><span>Kubernetes</span><span>Kaniko</span><span>GPU/MIG</span><span>Istio</span></div>
+        <a class="text-link" href="/posts/build-platform.html">Engineering note 읽기 →</a>
+      </article>
+      <article class="system-card violet">
+        <div class="card-meta"><span>DISTRIBUTED SYSTEMS</span><b>03</b></div>
+        <h3>Distributed Training Monitor</h3><p>H100 멀티노드 환경에서 MPIJob, Horovod, DeepSpeed, Ray의 실행·통신·스케줄링 경로를 검증.</p>
+        <div class="mini-ui dark violet-ui">
+          <div class="mini-head">MULTI-NODE TRAINING</div>
+          <div class="nodes"><span>GPU ×1<br><b>1.00×</b></span><span>GPU ×5<br><b>4.26×</b></span><span>GPU ×10<br><b>6.92×</b></span></div>
+          <div class="node-line"></div>
+        </div>
+        <div class="tags"><span>H100</span><span>NCCL</span><span>MPIJob</span><span>Ray</span></div>
+        <a class="text-link" href="/posts/distributed-training.html">Engineering note 읽기 →</a>
+      </article>
+    </div>
+  </section>
+
+  <section class="section gray" id="writing"><div class="shell">
+    <div class="section-head"><p class="eyebrow">LATEST WRITING</p><h2>기술 스택보다<br>문제의 구조를 기록합니다.</h2></div>
+    <div class="post-list">
+      <a class="post featured" href="/posts/network-sentinel.html"><div><span>NETWORK AI · OPERATIONS</span><h3>2.19M Syslog를 1,291개 Pattern으로 줄인 이유</h3><p>예측 모델보다 먼저 필요했던 것은 ‘학습 가능한 운용 데이터 구조’였다.</p></div><b>01</b></a>
+      <a class="post" href="/posts/build-platform.html"><div><span>AI INFRA · KUBERNETES</span><h3>컨테이너 빌드 1,319초를 330초로 줄이기</h3><p>Kaniko cache, PVC, GPFS와 동시 요청 제어까지 운영 시스템으로 만든 과정.</p></div><b>02</b></a>
+      <a class="post" href="/posts/distributed-training.html"><div><span>DISTRIBUTED AI</span><h3>GPU 10장이면 정말 10배 빨라질까?</h3><p>NCCL Socket 환경에서 10 GPU 6.92×를 확인하며 배운 통신·rank·스케줄링.</p></div><b>03</b></a>
+      <a class="post" href="/posts/ops-first.html"><div><span>ENGINEERING PHILOSOPHY</span><h3>운영에서 살아남는 AI 시스템을 만드는 법</h3><p>모델, API, 인프라, 네트워크를 분리하지 않고 하나의 사용자 흐름으로 보는 관점.</p></div><b>04</b></a>
+    </div>
+  </div></section>
+
+  <section class="section shell" id="topics"><div class="section-head center"><p class="eyebrow">TOPICS</p><h2>지금까지의 경험을<br>다섯 개의 축으로 기록할게요.</h2></div>
+    <div class="topic-grid"><div><b>Network AI</b><span>Syslog · CEI · NMS · Ops Automation</span></div><div><b>AI Systems</b><span>LLM · Agent · RAG · Tooling</span></div><div><b>Infrastructure</b><span>Kubernetes · GPU · Storage · Network</span></div><div><b>Distributed Systems</b><span>NCCL · Ray · MPI · Scheduling</span></div><div><b>Research</b><span>Security · GNN · Multimodal AI</span></div></div>
+  </section>
+</main>
+<footer><div class="shell"><div><b>YUNJI SYSTEMS</b><p>AI · Network · Infrastructure Engineering Notes</p></div><div class="footer-links"><a href="https://github.com/wendyunji" target="_blank">GitHub ↗</a><a href="https://wendyunji-resume.vercel.app" target="_blank">Resume ↗</a></div></div></footer>
+</body></html>
