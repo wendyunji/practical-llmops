@@ -1,0 +1,23 @@
+<!doctype html><html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>지능망 솔루션 / Engineering — Yunji Tech Notes</title><link rel="stylesheet" href="/styles.css"><style>.doc{max-width:860px;margin:auto;padding:72px 28px 140px}.doc h1{font-size:48px;letter-spacing:-.05em;line-height:1.15}.doc h2{font-size:28px;margin-top:58px}.doc h3{font-size:20px;margin-top:34px}.doc p,.doc li{font-size:16px;line-height:1.85;color:#515862}.doc table{width:100%;border-collapse:collapse;margin:24px 0;font-size:14px}.doc th,.doc td{border:1px solid #e2e6eb;padding:11px 13px;text-align:left;vertical-align:top}.doc th{background:#f6f8fa}.doc pre{background:#151a23;color:#e9edf3;padding:20px;border-radius:14px;overflow:auto;line-height:1.7}.lead{font-size:19px!important;color:#6f7680!important}.call{background:#f5f8fc;border-left:3px solid #3182f6;padding:18px 20px;border-radius:0 12px 12px 0;margin:28px 0}.meta{font:700 11px monospace;color:#3182f6}.back{font-size:13px;font-weight:700}</style></head><body><header class="site-head"><div class="wrap head-in"><a class="brand" href="/">Yunji Tech Notes</a><nav><a href="/#voice">Voice / IMS</a><a href="/#archive">Archive</a></nav></div></header><article class="doc"><a class="back" href="/">← Knowledge Base</a><p class="meta">VOICE · INTELLIGENT NETWORK</p><h1>지능망 솔루션 / Engineering</h1><p class="lead">지능망은 전화번호를 단순히 교환기로 연결하는 데서 끝나지 않고, 번호 번역·라우팅·과금·부가서비스를 별도 서비스 로직으로 분리한 구조다.</p><div class="call"><b>핵심 질문</b><p>“이 번호는 실제 어느 번호로 연결해야 하는가?”, “누가 요금을 부담하는가?”, “발신 위치나 시간에 따라 다른 센터로 보내야 하는가?”, “안내방송이나 메시징 같은 기능을 붙여야 하는가?”를 전화 교환 기능 바깥의 서비스 로직으로 처리하는 것이 지능망의 핵심이다.</p></div><h2>1. 지능망 서비스란?</h2><p>일반 교환망이 전화 연결 자체를 담당한다면 지능망은 그 위에 서비스 정책을 얹는다. 대표번호, 착신과금, 안심번호, 번호 번역, 안내 서비스처럼 단순 1:1 전화번호 연결로 해결할 수 없는 기능이 지능망 영역에 들어간다.</p><table><thead><tr><th>서비스</th><th>예시</th><th>핵심 로직</th></tr></thead><tbody><tr><td>전국대표번호</td><td>15XX / 16XX 계열</td><td>하나의 대표번호를 실제 지점·센터 번호로 번역.</td></tr><tr><td>착신과금</td><td>080</td><td>발신자가 아니라 착신 측이 요금을 부담하도록 처리.</td></tr><tr><td>안심번호</td><td>가상번호</td><td>실제 번호를 숨기고 임시 번호로 중계.</td></tr><tr><td>특수번호</td><td>서비스 번호</td><td>번호 자체가 특정 서비스 Trigger 역할.</td></tr><tr><td>부가 기능</td><td>안내방송, SMS 등</td><td>통화 전후 별도 서비스 로직 실행.</td></tr></tbody></table><h2>2. Engineering / Solution / Build</h2><table><thead><tr><th>업무</th><th>내용</th></tr></thead><tbody><tr><td>Engineering</td><td>시설 투자, 용량 산정, Traffic 증가에 따른 증설 판단.</td></tr><tr><td>Solution</td><td>서비스 구조와 번호/과금/라우팅 로직 설계 및 검증.</td></tr><tr><td>Build</td><td>장비·선로·DB 연동, 이중화, 상용망 적용.</td></tr><tr><td>Operations Support</td><td>장애 분석, 품질 관리, 서비스 로직 오류 대응.</td></tr><tr><td>Integration</td><td>교환기, 가입자 DB, API, 고객 시스템 간 연동.</td></tr></tbody></table><p>결국 지능망은 ‘전화 장비’를 운영하는 것보다 <b>서비스 정책을 실제 망 동작으로 연결하는 영역</b>에 가깝다.</p><h2>3. PSTN 기본 구조와 지능망</h2><pre>가입자
+  ↓
+Local Exchange / SSP
+  ↓  Service Trigger
+Service Control Logic / SCP
+  ↓  Routing result
+교환망
+  ↓
+실제 착신 번호</pre><p>교환기는 특정 번호나 조건에서 지능망 Query를 발생시키고, 서비스 제어 로직은 DB와 정책을 조회해 최종 연결 경로를 반환한다.</p><h2>4. 번호 라우팅</h2><p>전화번호는 단순 문자열이 아니라 라우팅과 과금의 입력값이다. 과거 PSTN에서는 지역번호와 통화권이 시내/시외 구분과 경로 선택에 직접 연결됐다.</p><p>지능망에서는 번호 자체가 실제 단말 번호가 아닐 수도 있다. 대표번호를 받으면 사용자 위치, 시간, 센터 상태, 정책에 따라 여러 실제 착신번호 중 하나로 번역할 수 있다.</p><h3>대표번호 예시</h3><pre>Customer dials representative number
+        ↓
+Switch detects intelligent-network trigger
+        ↓
+Service logic checks policy / destination table
+        ↓
+Representative number → real destination
+        ↓
+Call continues through voice network</pre><h2>5. 과금 로직</h2><p>착신과금 같은 서비스는 일반 전화의 ‘발신자 과금’ 규칙과 다르다. 따라서 지능망 서비스는 단순 Routing뿐 아니라 과금 주체와 정산 정보를 함께 제어해야 한다.</p><p>통화가 실제로 연결된 뒤 CDR이 생성되고, 서비스 유형과 번호, 시간, 사업자 경로 같은 정보가 과금 시스템에서 다시 사용될 수 있다.</p><h2>6. 서비스 DB의 역할</h2><p>번호 번역과 서비스 정책은 장비 Config에만 들어있는 것이 아니라 별도 DB와 연동될 수 있다. 운영 관점에서 중요한 것은 데이터 정합성이다.</p><ul><li>대표번호와 실제 착신번호 Mapping</li><li>가입자/고객별 서비스 가입 상태</li><li>시간대·지역별 Routing Policy</li><li>Failover Destination</li><li>과금 정책 및 서비스 유형</li></ul><p>DB 정보가 잘못되면 망 장비가 정상이어도 잘못된 번호로 연결되거나 서비스가 실패할 수 있다.</p><h2>7. 장애를 어떻게 볼까</h2><p>지능망 장애는 물리 회선 장애와 달리 ‘전화는 걸리는데 특정 서비스만 실패’하는 형태로 나타날 수 있다. 따라서 계층별 확인이 필요하다.</p><pre>1. 발신 자체가 가능한가?
+2. 교환기가 Service Trigger를 정상 인식하는가?
+3. Service Control Query/Response가 성공하는가?
+4. 번호 번역 결과가 올바른가?
+5. DB 데이터가 정상인가?
+6. 변환된 실제 번호로 Routing 가능한가?
+7. CDR / 과금 정보는 정상 생성되는가?</pre><h2>8. All-IP 환경에서의 변화</h2><p>PSTN에서 SoftSwitch와 IMS로 진화해도 ‘서비스 로직을 별도로 분리한다’는 아이디어는 계속 남는다. 과거 SCP가 담당하던 역할 일부는 Application Server, API, Service Platform 형태로 옮겨갈 수 있다.</p><p>즉, 지능망을 이해하는 것은 Legacy Voice를 배우는 데서 끝나지 않고 <b>통신 서비스의 Control Plane과 Business Logic을 분리하는 방법</b>을 이해하는 데 도움이 된다.</p></article></body></html>
