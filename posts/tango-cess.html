@@ -1,0 +1,16 @@
+<!doctype html><html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Tango CESS 선로 비상 복구 — Yunji Tech Notes</title><link rel="stylesheet" href="/styles.css"><style>.doc{max-width:880px;margin:auto;padding:72px 28px 150px}.doc h1{font-size:46px;letter-spacing:-.05em}.doc h2{font-size:26px;margin-top:56px;border-top:1px solid #e7e9ee;padding-top:16px}.doc p,.doc li{font-size:15.5px;line-height:1.9;color:#505760}.doc table{width:100%;border-collapse:collapse;margin:22px 0;font-size:14px}.doc td,.doc th{border:1px solid #e2e6eb;padding:11px 13px;vertical-align:top;text-align:left}.doc th{background:#f6f8fa}.doc pre{background:#151a23;color:#edf1f6;border-radius:13px;padding:18px;overflow:auto}.meta{font:700 11px monospace;color:#3182f6}.back{font-size:13px;font-weight:700}.note{background:#f5f8fc;border-left:3px solid #3182f6;padding:16px 19px}</style></head><body><header class="site-head"><div class="wrap head-in"><a class="brand" href="/">Yunji Tech Notes</a></div></header><article class="doc"><a class="back" href="/">← Notes</a><p class="meta">OPERATIONS · FIBER RECOVERY</p><h1>Tango CESS<br>선로 비상 복구 시스템</h1><h2>1. 교육 개요</h2><p>CESS를 활용해 선로 단선 위치를 예측하고, 등록된 설비·경로 정보를 바탕으로 장애 지점을 좁히는 실습을 진행했다. 핵심은 장애 알람 자체보다 <b>어떤 선로를 따라 서비스가 지나가는지</b>를 GIS/설비 데이터와 연결해 보는 것이다.</p><ul><li>선로 단선 위치 예측</li><li>설비/경로 데이터 기반 장애 구간 추적</li><li>운용팀 모의훈련을 통한 복구 절차 확인</li></ul><h2>2. 시스템 관계</h2><table><tr><th>시스템</th><th>역할</th></tr><tr><td>Tango</td><td>공사·운용 업무, 비용, 자재, 정산, 공사 정보 등을 관리하는 플랫폼.</td></tr><tr><td>CESS</td><td>Tango 내 선로 장애 위치 추적/예측 기능.</td></tr><tr><td>FOMS</td><td>광 기반 Access 설비/운용 정보를 관리하는 시스템.</td></tr><tr><td>ADAMS</td><td>장애·운용 관점의 Network 정보와 연계되는 시스템.</td></tr></table><h2>3. FDF 선번 기반 추적</h2><p>FDF 선번 정보를 이용하면 특정 회선이 어느 광 경로를 통과하는지 조회하고 장애 대상을 묶어 공통 구간을 찾을 수 있다.</p><pre>장애 회선 식별
+→ FDF 선번 입력
+→ 대상 회선 담기
+→ 여러 회선 동시 선택
+→ 통합 위치 추적
+→ 공통 선로/구간 확인</pre><p>여러 서비스가 동시에 장애가 났다면, 각 회선의 경로를 겹쳐보는 것만으로도 공통 단선 구간 후보를 빠르게 좁힐 수 있다.</p><h2>4. OTDR 기반 위치 추적</h2><p>OTDR 측정값은 광펄스를 보내고 돌아오는 반사 신호를 분석해 장애가 발생한 대략적인 거리를 알려준다. CESS와 결합하면 단순히 “국사에서 38km” 같은 거리 정보를 실제 GIS 선로 위의 위치 후보로 변환할 수 있다.</p><pre>OTDR 측정 거리
++ 기준 국사 / FDF 정보
++ GIS 광선로 경로
+= 실제 단선 후보 지점</pre><div class="note"><b>왜 중요한가?</b><p>OTDR은 물리 거리 정보를 주고, GIS/선번 데이터는 그 거리가 실제 어떤 도로·관로·맨홀·선로 구간인지 알려준다. 둘을 연결해야 현장 인력이 어디로 출동할지 결정할 수 있다.</p></div><h2>5. 장애 복구 관점</h2><p>선로 단선 대응에서는 장애를 감지한 뒤 현장 출동까지 걸리는 시간을 줄이는 것이 중요하다. 특히 여러 회선이 동시에 영향을 받는 경우 공통 위험 구간을 빠르게 찾아야 한다.</p><pre>Alarm 발생
+→ 영향 회선 수집
+→ 설비/FDF 정보 매핑
+→ 공통 선로 후보 탐색
+→ OTDR 거리와 GIS 위치 대조
+→ 현장 출동
+→ 임시/영구 복구
+→ 서비스 정상 여부 확인</pre><h2>6. 데이터 품질이 곧 복구 정확도</h2><p>CESS 같은 위치 추적 시스템은 Algorithm만으로 동작하지 않는다. FDF 선번, 장비 연결 관계, 선로 GIS, 국사·함체 위치, 실제 개통 경로가 최신 상태로 유지되어야 결과가 정확하다. 현장 변경이 시스템에 반영되지 않으면 경로 추적 결과도 틀릴 수 있다.</p><h2>7. 운용 자동화로 이어지는 지점</h2><p>향후 자동화 관점에서는 장애 회선들의 경로를 자동 비교하고, 공통 Risk Segment를 우선순위로 추천하거나 OTDR 결과를 GIS와 자동 결합하는 방식으로 발전할 수 있다. 즉, 단순 장애 조회에서 <b>장애 위치 추정 → 현장 조치 우선순위</b>까지 연결되는 것이 핵심이다.</p></article></body></html>
