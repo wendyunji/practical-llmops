@@ -1,0 +1,20 @@
+<!doctype html><html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>단말 접속 실습 — PSTN / AGCF / AGW</title><link rel="stylesheet" href="/styles.css"><style>.doc{max-width:880px;margin:auto;padding:72px 28px 150px}.doc h1{font-size:46px;letter-spacing:-.05em}.doc h2{font-size:26px;margin-top:56px;border-top:1px solid #e7e9ee;padding-top:16px}.doc p,.doc li{font-size:15.5px;line-height:1.9;color:#505760}.doc table{width:100%;border-collapse:collapse;margin:22px 0;font-size:14px}.doc td,.doc th{border:1px solid #e2e6eb;padding:11px 13px;vertical-align:top;text-align:left}.doc th{background:#f6f8fa}.doc pre{background:#151a23;color:#edf1f6;border-radius:13px;padding:18px;overflow:auto}.meta{font:700 11px monospace;color:#3182f6}.back{font-size:13px;font-weight:700}.note{background:#f5f8fc;border-left:3px solid #3182f6;padding:16px 19px}</style></head><body><header class="site-head"><div class="wrap head-in"><a class="brand" href="/">Yunji Tech Notes</a></div></header><article class="doc"><a class="back" href="/">← Notes</a><p class="meta">VOICE · TERMINAL PRACTICE</p><h1>단말 접속 실습<br>PSTN / AGCF / AGW</h1><h2>1. 장비 구조</h2><p>PSTN_AGCF_AGW는 기존 PSTN 전화망과 IP 기반 음성망을 연결하기 위한 장비군으로 이해할 수 있다. 기존 전화 단말·가입자 회선을 IP 음성 서비스로 수용하는 흐름이다.</p><pre>전화 단말 / 가입자 회선
+        ↓
+       AGW
+        ↓
+   AGCF / MGC
+        ↓
+VoIP망 / 교환망 / PSTN 연동망</pre><h2>2. AGW와 AGCF</h2><table><tr><th>구분</th><th>의미</th><th>역할</th></tr><tr><td>AGW</td><td>Access Gateway</td><td>가입자 음성/전화 신호를 IP망에서 전달 가능한 형태로 변환.</td></tr><tr><td>AGCF</td><td>Access Gateway Control Function</td><td>AGW를 제어하고 가입자·호 제어 정보를 관리.</td></tr><tr><td>MGCP</td><td>Media Gateway Control Protocol</td><td>상위 Call Agent/MGC가 Gateway를 제어하는 프로토콜.</td></tr></table><p>AGW가 모든 Call Logic을 독립적으로 판단하기보다 AGCF/MGC의 제어를 받아 미디어 경로를 열고 닫는 구조에 가깝다. 제어 Plane과 Media Plane을 분리해서 이해하면 편하다.</p><h2>3. 실습 흐름</h2><pre>1. AGW 장비 CLI 접속
+2. System 정보 확인
+3. MGCP 상태 확인
+4. 단말 / 가입자 식별 정보 확인
+5. MAC / Chip / TID / Endpoint 확인
+6. 서비스 시스템의 가입자 정보와 장비 정보를 대조</pre><h2>4. CLI 접속</h2><p>실습에서는 Telnet 형태의 CLI 접속을 사용했다. 실제 운영 환경에서 Telnet은 암호화되지 않는 방식이므로 접근망 제한, 계정 권한, 작업 로그, 망분리 같은 통제가 함께 필요하다. 별도 Port를 사용하는 경우 장비 전용 관리 Port, Console Server Mapping, 교육용 접속 Port 등 여러 가능성이 있다.</p><h2>5. show system</h2><table><tr><th>확인 항목</th><th>의미</th></tr><tr><td>Hostname / Model</td><td>어떤 장비에 접속했는지 식별.</td></tr><tr><td>Software Version</td><td>현재 구동 소프트웨어 확인.</td></tr><tr><td>Uptime</td><td>최근 재기동 여부.</td></tr><tr><td>CPU / Memory</td><td>장비 부하.</td></tr><tr><td>Interface</td><td>관리 IP와 Port 상태.</td></tr><tr><td>Time</td><td>로그 분석 기준 시간.</td></tr><tr><td>Slot / Board</td><td>장착된 Card/Board 상태.</td></tr></table><h2>6. show mgcp</h2><p>MGCP 상태에서는 Gateway가 상위 제어 장비와 정상적으로 연결되고 제어받는지를 본다.</p><table><tr><th>항목</th><th>의미</th></tr><tr><td>MGCP Enable 상태</td><td>기능 활성 여부.</td></tr><tr><td>Call Agent / MGC</td><td>상위 제어 장비 주소.</td></tr><tr><td>Registration</td><td>Gateway가 정상 등록되었는지.</td></tr><tr><td>Endpoint</td><td>가입자 Port/회선 인식 상태.</td></tr><tr><td>Restart / Session</td><td>재등록 및 현재 연결 상태.</td></tr></table><div class="note"><b>MGCP와 RTP</b><p>MGCP는 Media Gateway를 제어하는 프로토콜이고 실제 음성 Media는 보통 RTP 같은 별도 흐름으로 전달된다.</p></div><h2>7. TID와 단말 식별</h2><p>실습 맥락에서 TID는 서비스/가입자 또는 단말을 장비 내부 Endpoint와 연결하기 위한 논리 식별자 성격으로 볼 수 있다. 정확한 사내 정의는 별도 기준 문서를 확인해야 하지만, 실제 운용에서는 전화번호·가입자 정보·장비 Port·MAC·Endpoint를 연결하는 Mapping이 중요하다.</p><pre>전화번호
+  ↓
+가입자 정보
+  ↓
+TID
+  ↓
+AGW Port / Endpoint / MAC / Chip
+  ↓
+실제 단말 또는 회선</pre><h2>8. MAC / Chip / Endpoint</h2><table><tr><th>정보</th><th>용도</th></tr><tr><td>MAC Address</td><td>단말의 물리 식별.</td></tr><tr><td>Chip / Board 정보</td><td>하드웨어 단위 식별.</td></tr><tr><td>IP Address</td><td>네트워크 주소.</td></tr><tr><td>TID</td><td>논리 가입자/단말 식별.</td></tr><tr><td>전화번호</td><td>가입자 서비스 번호.</td></tr><tr><td>Endpoint ID</td><td>MGCP가 제어하는 단말/Port 단위 식별.</td></tr></table><h2>9. 실습에서 연결해서 본 것</h2><p>단말 접속 실습의 핵심은 CLI 명령 자체보다 서비스 시스템의 가입자 정보가 실제 Gateway의 Port/Endpoint와 어떻게 연결되는지 확인하는 것이었다. 가입자 정보 → 논리 ID → 장비 Endpoint → 실제 Media Path까지 연결해서 보면 PSTN과 IP 음성망의 연동 구조가 훨씬 명확해진다.</p></article></body></html>
