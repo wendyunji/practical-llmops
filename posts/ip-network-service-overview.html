@@ -1,0 +1,23 @@
+<!doctype html><html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>IP망 기간 정보 개요 — Yunji Tech Notes</title><link rel="stylesheet" href="/styles.css"><style>.doc{max-width:900px;margin:auto;padding:72px 28px 150px}.doc h1{font-size:48px;letter-spacing:-.05em}.doc h2{font-size:27px;margin-top:58px;border-top:1px solid #e7e9ee;padding-top:16px}.doc h3{font-size:19px;margin-top:30px}.doc p,.doc li{font-size:15.5px;line-height:1.9;color:#4f5660}.doc table{width:100%;border-collapse:collapse;margin:22px 0;font-size:14px}.doc th,.doc td{border:1px solid #e2e6eb;padding:11px 13px;text-align:left;vertical-align:top}.doc th{background:#f6f8fa}.doc pre{background:#151a23;color:#eef2f7;padding:19px;border-radius:13px;overflow:auto;line-height:1.7}.note{background:#f5f8fc;border-left:3px solid #3182f6;padding:17px 20px;border-radius:0 12px 12px 0}.meta{font:700 11px monospace;color:#3182f6}.back{font-size:13px;font-weight:700}</style></head><body><header class="site-head"><div class="wrap head-in"><a class="brand" href="/">Yunji Tech Notes</a><nav><a href="/#network">Network</a><a href="/#archive">Archive</a></nav></div></header><article class="doc"><a class="back" href="/">← Notes</a><p class="meta">NETWORK · SERVICE FLOW</p><h1>IP망 기간 정보 개요</h1><h2>1. 망 구성 개요</h2><h3>가입자망과 백본/집선망</h3><p>가입자망은 고객 단말, STB, PC, 공유기 등이 실제로 연결되는 하위 구간이고, 상위 집선망/백본은 가입자 트래픽을 모아 인터넷망, IPTV망, CATV망, IDC, 국내·국제 연동망으로 전달한다.</p><pre>고객 단말 / STB / PC
+→ 가입자망
+→ OLT / CMTS / FCO / VCO
+→ AR / FBS
+→ DS
+→ CR / NSP / 미디어망
+→ 외부 인터넷, IDC, 방송 서버, CDN</pre><table><tr><th>장비/계위</th><th>역할</th></tr><tr><td>OLT</td><td>광 기반 가입자를 수용.</td></tr><tr><td>CMTS</td><td>HFC 기반 케이블 인터넷 가입자를 수용.</td></tr><tr><td>AR</td><td>Aggregation Router. 가입자 트래픽을 상위망으로 집선.</td></tr><tr><td>FBS</td><td>B2B/기업 가입자 트래픽 집선 계위.</td></tr><tr><td>DS</td><td>지역 단위 트래픽을 모아 상위망으로 전달.</td></tr><tr><td>CR</td><td>Core Router. 국내/국제 인터넷, IDC, 백본 연동의 핵심.</td></tr><tr><td>MSO / SO / CO</td><td>케이블 방송 사업/지역 거점/국사 개념.</td></tr></table><h2>2. 트래픽 전달 방식</h2><h3>Unicast</h3><p>1:1 통신 방식. 웹서핑, 파일 다운로드, OTT 등 대부분의 일반 인터넷 트래픽은 사용자별로 별도 흐름이 만들어진다. 같은 콘텐츠를 대규모 사용자가 동시에 보면 서버와 CDN, 망 구간에 반복 트래픽이 증가한다.</p><pre>Server → User A
+Server → User B
+Server → User C</pre><h3>Broadcast</h3><p>특정 네트워크 안의 전체 단말을 대상으로 하는 1:전체 방식. IP망에서는 범위를 제한하지 않으면 부하가 커질 수 있다.</p><h3>Multicast</h3><p>1:그룹 방식. IPTV 실시간 방송처럼 동일 콘텐츠를 여러 가입자가 동시에 보는 경우 효율적이다. 가입자는 특정 Multicast Group에 Join하고 채널을 바꾸거나 종료하면 Leave한다.</p><div class="note"><b>실시간 방송</b><p>월드컵, 대형 Live Streaming 등을 전부 Unicast로 제공하면 동일 영상이 사용자 수만큼 반복 전송된다. IPTV가 Multicast를 사용하는 핵심 이유다.</p></div><h2>3. 인터넷 트래픽 흐름</h2><pre>고객 PC
+→ 가입자망
+→ AR / FBS
+→ DS
+→ Core
+→ 국내/국제 인터넷 연동망 또는 IDC</pre><p>일반 가입자는 OLT/CMTS를 통해 가입자망에 연결되고 AR에서 집선된다. 기업/B2B 서비스는 별도 집선 계위를 거쳐 상위망으로 올라갈 수 있다.</p><h2>4. IPTV 트래픽 흐름</h2><p>IPTV는 실시간 채널과 VoD를 나눠 보는 것이 중요하다.</p><table><tr><th>구분</th><th>실시간 IPTV</th><th>VoD</th></tr><tr><td>콘텐츠</td><td>현재 방송 중 채널</td><td>사용자가 요청한 콘텐츠</td></tr><tr><td>전송</td><td>Multicast 중심</td><td>Unicast / CDN 중심</td></tr><tr><td>구조</td><td>Head-End → 미디어망 → DS → AR → 가입자망</td><td>지역 CDN → DS → AR → 가입자망</td></tr></table><h3>실시간 IPTV</h3><pre>Head-End
+→ 미디어 전용망
+→ DS
+→ AR
+→ OLT / CMTS
+→ STB / TV</pre><h3>VoD</h3><pre>지역 CDN
+→ DS
+→ AR
+→ OLT / CMTS
+→ STB / TV</pre><h2>5. 이해 포인트</h2><ul><li>서비스 종류에 따라 같은 가입자에게 가더라도 트래픽 출발점과 전달 방식이 다르다.</li><li>인터넷은 Unicast 비중이 크고, 실시간 IPTV는 동일 채널을 효율적으로 전달하기 위해 Multicast를 활용한다.</li><li>VoD는 사용자 요청 기반이므로 CDN을 사용자 가까이에 배치해 Backbone Traffic과 Latency를 줄인다.</li><li>망 구조를 볼 때 장비 이름보다 ‘어디에서 트래픽이 시작되고, 어느 계위에서 집선되고, 어떤 방식으로 전달되는지’를 먼저 보는 것이 이해에 도움이 된다.</li></ul></article></body></html>
