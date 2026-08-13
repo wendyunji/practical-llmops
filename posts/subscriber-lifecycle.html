@@ -1,0 +1,20 @@
+<!doctype html><html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>가입·장애·해지 라이프사이클 — Yunji Tech Notes</title><link rel="stylesheet" href="/styles.css"><style>.doc{max-width:880px;margin:auto;padding:72px 28px 150px}.doc h1{font-size:46px;letter-spacing:-.05em}.doc h2{font-size:26px;margin-top:56px;border-top:1px solid #e7e9ee;padding-top:16px}.doc p,.doc li{font-size:15.5px;line-height:1.9;color:#505760}.doc table{width:100%;border-collapse:collapse;margin:22px 0;font-size:14px}.doc td,.doc th{border:1px solid #e2e6eb;padding:11px 13px;vertical-align:top;text-align:left}.doc th{background:#f6f8fa}.doc pre{background:#151a23;color:#edf1f6;border-radius:13px;padding:18px;overflow:auto}.meta{font:700 11px monospace;color:#3182f6}.back{font-size:13px;font-weight:700}</style></head><body><header class="site-head"><div class="wrap head-in"><a class="brand" href="/">Yunji Tech Notes</a></div></header><article class="doc"><a class="back" href="/">← Notes</a><p class="meta">OPERATIONS · CUSTOMER LIFECYCLE</p><h1>가입 / 장애 / 해지<br>라이프사이클</h1><p>고객 서비스가 개통되고 장애가 처리되고 최종 해지되기까지의 현장·시스템 흐름을 정리한 노트.</p><h2>1. 개통</h2><p>개통 전에는 도상 실사를 먼저 수행해 시스템 상의 설비·주소·경로 정보만으로 개통 가능 여부를 판단하고, 필요하면 현장 실사로 넘어간다.</p><pre>가입 요청
+→ 도상 실사
+→ 개통 가능 여부 판단
+→ 필요 시 현장 실사
+→ 작업자 배정
+→ 단말 / 회선 설치
+→ 서비스 개통 확인</pre><table><tr><th>역할</th><th>정리</th></tr><tr><td>SM</td><td>Service Manager. 현장 서비스 작업을 수행하는 실무 담당.</td></tr><tr><td>AM</td><td>All-round Manager. 지점 단위에서 SM이 처리하기 어려운 영역을 지원.</td></tr></table><h2>2. 장애 / AS</h2><p>장애가 접수되면 고객 상태를 원격 진단하고 온라인 지원으로 해결 가능한지 먼저 확인한 뒤, 현장 작업이 필요한 경우 담당자를 배정한다.</p><pre>장애 접수
+→ 고객/회선 상태 조회
+→ 온라인 진단·지원
+→ 원격 해결 가능?
+   ├─ Yes → 조치 / 종료
+   └─ No  → 지점 / 작업자 배정
+→ 현장 조치
+→ 정상화 확인</pre><p>작업 배정은 단순히 가까운 사람에게 넘기는 것이 아니라 지점, 담당 구역, 작업 역량과 같은 조건을 고려한다. 노후 단말은 일반 장애 처리와 별도로 교체 프로세스를 태워 선제적으로 교체하는 경우도 있다.</p><h2>3. 노후 단말 교체</h2><p>장기간 사용한 STB·Gateway 등 단말은 장애가 발생한 뒤 교체하는 방식뿐 아니라 특정 기준에 따라 사전 교체 대상으로 관리할 수 있다. 실제 기준은 서비스/단말 정책에 따라 별도 정의가 필요하다.</p><ul><li>단말 사용기간</li><li>장애 빈도</li><li>지원 종료 여부</li><li>신규 서비스 호환성</li><li>고객 품질 영향</li></ul><h2>4. 해지</h2><p>해지는 서비스 논리 정보만 삭제하는 것으로 끝나지 않고 단말 회수, 회선/Port 자원 반환, 과금 종료, 장비·자산 상태 변경이 함께 이루어진다.</p><pre>해지 요청
+→ 서비스 종료 처리
+→ 과금 / 가입자 상태 변경
+→ 단말 회수 또는 장비 상태 변경
+→ Port / 회선 자원 정리
+→ 재사용 가능한 자원 반환
+→ 해지 완료</pre><h2>5. 라이프사이클 관점에서 보는 시스템</h2><p>가입·장애·해지는 각각 다른 업무처럼 보이지만 실제로는 동일한 고객/회선/단말/주소/장비 정보를 계속 참조한다. 따라서 시스템을 설계할 때도 고객 단위 Master와 설비·운용 정보를 일관되게 연결하는 것이 중요하다.</p><table><tr><th>단계</th><th>핵심 데이터</th></tr><tr><td>가입</td><td>주소, 설비 가용성, 회선/Port, 단말, 작업자.</td></tr><tr><td>장애</td><td>가입자 상태, 단말 상태, 품질, Alarm, 작업 이력.</td></tr><tr><td>해지</td><td>가입자 종료, 자산 회수, 회선/Port 반환, 과금 종료.</td></tr></table><h2>6. 운영 자동화 관점</h2><p>이 전체 흐름을 연결하면 가입 단계의 설비 정보가 장애 진단에 그대로 사용되고, 장애 이력은 노후 단말 교체 판단에 활용되며, 해지 시 반환된 자원은 다시 개통 가능 자원으로 돌아간다. 결국 고객 Lifecycle 전체를 단일 흐름으로 연결하는 것이 운영 자동화의 기반이 된다.</p></article></body></html>
