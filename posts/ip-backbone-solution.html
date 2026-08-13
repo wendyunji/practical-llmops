@@ -1,0 +1,13 @@
+<!doctype html><html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>가입자 인터넷/IPTV Traffic Flow와 백본 솔루션 — Yunji Tech Notes</title><link rel="stylesheet" href="/styles.css"></head><body><header class="site-head"><div class="wrap head-in"><a class="brand" href="/">Yunji Tech Notes</a><nav><a href="/#backbone">IP / Backbone</a><a href="/#archive">Archive</a><a href="https://wendyunji-resume.vercel.app">Resume ↗</a></nav></div></header><article class="article-page"><div class="crumb"><a href="/">Home</a> / IP & Backbone</div><h1>가입자 인터넷/IPTV Traffic Flow와<br>백본 솔루션</h1><p class="article-deck">백본망을 이해하려면 라우터 이름보다 먼저 패킷이 어떤 계층으로 캡슐화되고, Unicast·Multicast가 어떻게 다른지, 가입자 트래픽이 어떤 계위를 거쳐 서비스망으로 이동하는지 연결해서 봐야 한다.</p><div class="article-meta"><span>OSI</span><span>Traffic Flow</span><span>Unicast</span><span>Multicast</span><span>Backbone</span></div><h2>1. 계층화와 캡슐화</h2><p>통신 데이터는 상위 계층에서 하위 계층으로 내려가며 각 계층의 제어정보를 덧붙인다. 상위에서 내려온 순수 데이터가 SDU, 현재 계층에서 붙이는 헤더·트레일러가 PCI, 둘을 합친 완성 단위를 PDU라고 이해하면 된다.</p><div class="flow">Application Data
+→ Transport Header
+→ Network Header
+→ Data Link Header
+→ Physical Signal
+
+수신 측에서는 역순으로 Header를 제거하며 상위 계층으로 전달</div><h2>2. Unicast, Broadcast, Multicast</h2><table><tr><th>방식</th><th>의미</th><th>대표 관점</th></tr><tr><td>Unicast</td><td>1:1 통신</td><td>일반 인터넷 세션</td></tr><tr><td>Broadcast</td><td>하나가 동일 Broadcast Domain의 다수에게 전송</td><td>ARP 등 L2/L3 인접 탐색</td></tr><tr><td>Multicast</td><td>특정 수신 그룹에게 동일 스트림 전달</td><td>IPTV 같은 1:N 미디어 전달에 효율적</td></tr></table><h2>3. 인터넷 가입자 트래픽의 큰 흐름</h2><p>고객 단말에서 나온 트래픽은 가입자 Access 장비에 수용되고 상위 집선 계위로 올라가며, Core/Backbone에서 목적지 서비스망이나 외부 인터넷 연동 지점으로 전달된다. 실제 장비 이름은 망 설계에 따라 다르지만 큰 계위는 ‘가입자 수용 → 지역 집선 → Core → 서비스/외부 연동’으로 볼 수 있다.</p><div class="flow">Subscriber Device
+→ Home / Access Network
+→ OLT / Access Aggregation
+→ AR / DS
+→ Core Router
+→ Service Network / CDN / IX / Transit
+→ Destination</div><h2>4. IPTV에서 Multicast가 중요한 이유</h2><p>동일 방송 채널을 수많은 가입자에게 각각 Unicast로 보내면 상위망의 동일 콘텐츠 복제가 크게 늘어난다. Multicast는 수신자가 있는 분기점에서 필요한 만큼만 복제해 전달할 수 있어 실시간 방송형 서비스에 적합하다. 수신자 가입 관리는 IGMP, L3 Multicast 경로 구성에는 PIM 계열이 연결된다.</p><h2>5. 백본 솔루션이 보는 문제</h2><p>백본 솔루션은 특정 프로토콜 하나가 아니라 전체 트래픽 수용 구조를 본다. 라우팅 정책, 장비 계위, 외부 사업자 연동, MPLS 서비스, Multicast, 캐시/CDN 배치와 장비 세대교체까지 함께 고려해야 한다.</p><div class="note"><p>서비스 흐름을 공부할 때는 ‘이 장비가 뭐지?’보다 <strong>이 구간에서 주소·경로·세션·미디어 중 무엇을 결정하는가</strong>를 묻는 편이 더 잘 연결된다.</p></div><p class="source-note">개인 Notion의 「[심화교육] IP백본망 솔루션」을 바탕으로 공개 가능한 개념 중심으로 재구성했습니다.</p></article></body></html>
