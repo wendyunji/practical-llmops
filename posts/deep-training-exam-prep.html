@@ -1,0 +1,22 @@
+<!doctype html><html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>심화교육 예상 문제 준비 — Yunji Tech Notes</title><link rel="stylesheet" href="/styles.css"><style>.doc{max-width:880px;margin:auto;padding:72px 28px 150px}.doc h1{font-size:46px;letter-spacing:-.05em}.doc h2{font-size:25px;margin-top:54px;border-top:1px solid #e7e9ee;padding-top:16px}.doc h3{font-size:20px;margin-top:34px}.doc p,.doc li{font-size:15.5px;line-height:1.9;color:#505760}.doc table{width:100%;border-collapse:collapse;margin:22px 0;font-size:14px}.doc td,.doc th{border:1px solid #e2e6eb;padding:11px 13px;vertical-align:top;text-align:left}.doc th{background:#f6f8fa}.doc pre{background:#151a23;color:#edf1f6;border-radius:13px;padding:18px;overflow:auto}.meta{font:700 11px monospace;color:#3182f6}.back{font-size:13px;font-weight:700}.q{font-size:22px;font-weight:800;margin-top:42px}</style></head><body><header class="site-head"><div class="wrap head-in"><a class="brand" href="/">Yunji Tech Notes</a></div></header><article class="doc"><a class="back" href="/">← Notes</a><p class="meta">NETWORK · REVIEW</p><h1>심화교육 예상 문제 준비</h1><p>교육 내용을 문제 형태로 다시 정리한 Review Note.</p><h2>1. 망 구성 개요에 대하여 설명하시오</h2><h3>초고속 인터넷</h3><pre>국내/국제 연동망 · IDC
+→ Core
+→ DS
+→ AR / FBS
+→ 가입자망
+→ 고객 단말</pre><p>일반 Mass 가입자는 OLT/CMTS → AR 계열로 집선되고, 기업/B2B 서비스는 별도 집선 계위를 거쳐 상위망으로 전달된다.</p><h3>IPTV</h3><pre>실시간 IPTV
+Head-End → Media Network → DS → AR → OLT/CMTS → STB/TV
+= Multicast 중심
+
+VoD
+Regional CDN → DS → AR → OLT/CMTS → STB/TV
+= Unicast/CDN 중심</pre><h3>CATV</h3><p>CATV망은 별도 사업/지역 계위의 Headend/Hub와 가입자망 구조를 가지며 인터넷 Traffic과 방송 Traffic의 유입 경로가 다를 수 있다. 실제 운영 구조는 시스템/망 구성도 기준으로 확인한다.</p><h2>2. Route 선택 원리를 설명하시오</h2><table><tr><th>항목</th><th>설명</th></tr><tr><td>Recursive Lookup</td><td>Next-Hop을 도달시키기 위한 Route를 반복 조회.</td></tr><tr><td>Longest Prefix Match</td><td>목적지와 가장 긴 Prefix가 일치하는 Route를 우선.</td></tr><tr><td>Administrative Distance</td><td>서로 다른 Routing Source의 신뢰도. 일반적으로 낮을수록 우선.</td></tr><tr><td>Metric</td><td>동일 Protocol 내 Path Cost. Protocol 정의에 따라 비교.</td></tr></table><h2>3. Internet Direct 유형 표</h2><p>교육 노트에 정리된 Routing Scope / Service Scope / Community Mapping.</p><table><tr><th>Type</th><th>Routing Scope</th><th>Internet Service Scope</th><th>Import Community</th><th>Export Community</th></tr><tr><td>IDD</td><td>Full Domestic</td><td>Only Domestic</td><td>110</td><td>100, 110, 130, 200</td></tr><tr><td>IDI</td><td>Full International + Default</td><td>Only International</td><td>120</td><td>300 + Default</td></tr><tr><td>NSP</td><td>Full Domestic + Default</td><td>Domestic + International</td><td>130</td><td>100, 110, 130, 200 + Default</td></tr></table><h2>4. 빠른 복습</h2><pre>Q. 실시간 IPTV가 Multicast에 적합한 이유?
+A. 같은 채널 Traffic을 가입자 수만큼 반복 전송하지 않아도 되기 때문.
+
+Q. VoD가 CDN을 사용하는 이유?
+A. 사용자 가까이에서 콘텐츠를 전달해 Backbone Traffic과 Latency를 줄이기 위해.
+
+Q. LPM이 먼저 중요한 이유?
+A. 목적지에 더 구체적인 Route가 있으면 그 Route를 사용해야 하기 때문.
+
+Q. AD와 Metric 차이?
+A. AD는 서로 다른 Route Source 비교, Metric은 같은 Protocol 안의 Path 비교 관점.</pre></article></body></html>
