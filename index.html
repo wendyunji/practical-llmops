@@ -1,1 +1,124 @@
-<!doctype html><html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Yunji Tech Notes</title><meta name="description" content="Network, AI, Infrastructure, Distributed Systems 기술 기록"><link rel="stylesheet" href="/styles.css"></head><body class="home"><header class="site-head"><div class="wrap head-in"><a class="brand" href="/">Yunji Tech</a><nav><a href="#articles">Engineering</a><a href="#series">Series</a><a href="/resume.html">1 Page Resume</a></nav></div></header><main><section class="hero-feature wrap"><a class="feature-card" href="/post.html?slug=deep-training-expected-questions"><div class="feature-copy"><span class="article-kind">NETWORK · STUDY NOTE</span><h1>네트워크를 공부하면서<br>계속 다시 보게 되는 것들</h1><p>라우팅, 전송망, 전화망과 운영 시스템. 개별 용어를 외우기보다 패킷과 신호가 실제 망을 어떻게 지나가는지 연결해서 기록한다.</p><div class="byline">Yunji · Engineering Notes</div></div><div class="feature-art network-art" aria-hidden="true"><div class="net-node n1">USER</div><div class="net-node n2">ACCESS</div><div class="net-node n3">BACKBONE</div><div class="net-node n4">SERVICE</div><i class="line l1"></i><i class="line l2"></i><i class="line l3"></i><span class="packet p1"></span><span class="packet p2"></span></div></a></section><section class="article-area wrap" id="articles"><div class="section-title"><h2>전체 아티클</h2><div class="filters"><button class="active" data-filter="all">전체</button><button data-filter="network">Network</button><button data-filter="transport">Transport</button><button data-filter="voice">Voice</button><button data-filter="ops">Operations</button><button data-filter="ai">AI · Infra</button></div></div><div class="editorial-list" id="article-list"><a class="editorial-row" data-cat="network" href="/posts/ip-network-overview.html"><div class="row-copy"><span>Network</span><h3>IP망 백본 정보 개요</h3><p>Internet, AS, BGP, Route Selection, Flow, Security까지 백본 IP망을 따라가며 정리한 노트</p><small>Routing · BGP · OSPF · IS-IS</small></div><div class="row-thumb thumb-blue"><b>BGP</b><em>40 chapters</em></div></a><a class="editorial-row" data-cat="transport" href="/posts/transport-operations.html"><div class="row-copy"><span>Transport</span><h3>전송망 운용</h3><p>광통신 원리부터 Loss/Gain, OTDR, MSPP, ROADM, WSS, OTN과 보호절체까지</p><small>Optical · WDM · ROADM · OTN</small></div><div class="row-thumb thumb-cyan"><b>λ</b><em>Optical Network</em></div></a><a class="editorial-row" data-cat="network" href="/posts/ip-backbone-solution.html"><div class="row-copy"><span>Network</span><h3>IP백본망 솔루션</h3><p>OSI 계층, DHCP/DNS, IPTV Multicast, Routing Protocol과 MPLS를 서비스 흐름으로 연결하기</p><small>DHCP · IPTV · MPLS</small></div><div class="row-thumb thumb-indigo"><b>IP</b><em>Service Flow</em></div></a><a class="editorial-row" data-cat="transport" href="/posts/transport-solution.html"><div class="row-copy"><span>Transport</span><h3>전송망 솔루션</h3><p>전송장비 Lifecycle, 광통신과 WDM/ROADM/OTN, 백본 용량 설계의 기본 개념</p><small>WDM · PTN · OTN</small></div><div class="row-thumb thumb-purple"><b>OTN</b><em>Core Transport</em></div></a><a class="editorial-row" data-cat="transport" href="/posts/transport-engineering-core.html"><div class="row-copy"><span>Transport</span><h3>전송망 Eng. (기간망)</h3><p>SNCP, BLSR, Linear Protection과 PTN/ROADM/OTN 기반 기간망 보호 구조</p><small>Protection · PTN · ROADM</small></div><div class="row-thumb thumb-orange"><b>50ms</b><em>Protection</em></div></a><a class="editorial-row" data-cat="transport" href="/posts/transport-engineering-b2b.html"><div class="row-copy"><span>Transport</span><h3>전송망 Eng. (B2B)</h3><p>SDH → MSPP → PTN → POTN으로 이어지는 B2B 전용회선 전송 구조</p><small>SDH · MSPP · POTN</small></div><div class="row-thumb thumb-gray"><b>B2B</b><em>Private Line</em></div></a><a class="editorial-row" data-cat="transport" href="/posts/submarine-cable.html"><div class="row-copy"><span>Transport</span><h3>해저케이블 Engineering</h3><p>Landing Station, Fiber Pair, Repeater, PFE, Branching Unit, 포설과 유지보수</p><small>Submarine · Fiber Pair · PFE</small></div><div class="row-thumb thumb-ocean"><b>FP</b><em>Submarine Cable</em></div></a><a class="editorial-row" data-cat="voice" href="/posts/voice-network.html"><div class="row-copy"><span>Voice</span><h3>전화망의 이해</h3><p>PSTN에서 SoftSwitch, IMS로 이동하면서 신호와 미디어가 어떻게 분리됐는지</p><small>PSTN · SIP · RTP · IMS</small></div><div class="row-thumb thumb-green"><b>IMS</b><em>All IP</em></div></a><a class="editorial-row" data-cat="voice" href="/posts/voip-solution.html"><div class="row-copy"><span>Voice</span><h3>VoIP망 솔루션 / Engineering</h3><p>E1에서 All-IP로, 긴급통화 위치 라우팅과 QoS, 국사 이중화까지</p><small>VoIP · QoS · Emergency Call</small></div><div class="row-thumb thumb-lime"><b>SIP</b><em>Voice over IP</em></div></a><a class="editorial-row" data-cat="voice" href="/posts/pstn-solution.html"><div class="row-copy"><span>Voice</span><h3>PSTN망 솔루션 / Engineering</h3><p>C4/C5/Tandem, CDR와 과금, 상호접속료, DID/DOD, E1/T1, 지능망 구조</p><small>PSTN · SS7 · ISUP</small></div><div class="row-thumb thumb-rose"><b>SS7</b><em>Legacy Voice</em></div></a><a class="editorial-row" data-cat="voice" href="/posts/intelligent-network.html"><div class="row-copy"><span>Voice</span><h3>지능망 솔루션 / Engineering</h3><p>대표번호, 번호번역, 착신과금 등 전화 부가서비스 제어 구조</p><small>SCP · SSP · Number Translation</small></div><div class="row-thumb thumb-pink"><b>IN</b><em>Intelligent Network</em></div></a><a class="editorial-row" data-cat="ops" href="/posts/tango-cess.html"><div class="row-copy"><span>Operations</span><h3>Tango CESS 선로 비상 복구</h3><p>FDF 선번, OTDR, GIS/설비 데이터를 이용해 단선 후보 구간을 좁혀가는 과정</p><small>Fiber · OTDR · Recovery</small></div><div class="row-thumb thumb-yellow"><b>OTDR</b><em>Recovery</em></div></a><a class="editorial-row" data-cat="ops" href="/posts/subscriber-lifecycle.html"><div class="row-copy"><span>Operations</span><h3>가입 / 장애 / 해지 라이프사이클</h3><p>가입 가능 판단에서 개통, 원격진단, 현장 AS와 자원 반환까지</p><small>Provisioning · Trouble · Termination</small></div><div class="row-thumb thumb-mint"><b>E2E</b><em>Lifecycle</em></div></a><a class="editorial-row" data-cat="voice" href="/post.html?slug=voip-ssw-ipphone"><div class="row-copy"><span>Voice · Raw Markdown</span><h3>단말 접속 실습 (VoIP / SSW / IP Phone)</h3><p>Notion 원문 Markdown을 그대로 렌더링하는 기술 노트</p><small>SIP · SSW · IP Phone</small></div><div class="row-thumb thumb-sky"><b>SIP</b><em>Practice</em></div></a><a class="editorial-row" data-cat="ai" href="/posts/build-platform.html"><div class="row-copy"><span>AI · Infrastructure</span><h3>Kaniko 기반 Build Platform</h3><p>Kubernetes에서 Build API, Container Image, Queue와 실패 상태를 운영한 기록</p><small>Kubernetes · Kaniko · Registry</small></div><div class="row-thumb thumb-black"><b>K8s</b><em>Build Platform</em></div></a><a class="editorial-row" data-cat="ai" href="/posts/distributed-training.html"><div class="row-copy"><span>AI · Infrastructure</span><h3>Multi-node GPU Distributed Training</h3><p>H100, MPIJob, Horovod, NCCL을 이용한 멀티노드 분산 학습</p><small>GPU · NCCL · MPI</small></div><div class="row-thumb thumb-violet"><b>6.92×</b><em>10 GPUs</em></div></a></div></section><section class="series-area" id="series"><div class="wrap"><div class="section-title"><h2>시리즈</h2></div><div class="series-grid"><a href="#articles" class="series-card"><span>01</span><h3>Network Fundamentals</h3><p>IP, Routing, Backbone과 가입자 서비스 흐름</p><b>보러가기 →</b></a><a href="#articles" class="series-card"><span>02</span><h3>Transport Network</h3><p>광통신, WDM, ROADM, OTN과 보호절체</p><b>보러가기 →</b></a><a href="#articles" class="series-card"><span>03</span><h3>Voice & IMS</h3><p>PSTN, VoIP, SoftSwitch, IMS와 지능망</p><b>보러가기 →</b></a><a href="#articles" class="series-card"><span>04</span><h3>AI Systems</h3><p>Kubernetes, GPU와 분산 시스템</p><b>보러가기 →</b></a></div></div></section></main><footer><div class="wrap foot"><div><b>Yunji Tech</b><p>Engineering notes</p></div><a href="/resume.html">1 Page Resume ↗</a></div></footer><script>document.querySelectorAll('.filters button').forEach(btn=>btn.addEventListener('click',()=>{document.querySelectorAll('.filters button').forEach(b=>b.classList.remove('active'));btn.classList.add('active');const f=btn.dataset.filter;document.querySelectorAll('.editorial-row').forEach(row=>row.hidden=f!=='all'&&row.dataset.cat!==f)}));</script></body></html>
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Yunji Tech · Ray, KubeRay & LLMOps</title>
+  <meta name="description" content="Ray, KubeRay, Kubernetes, GPU 분산 학습과 모델 서빙을 운영 관점에서 정리한 기술 기록">
+  <link rel="stylesheet" href="/styles.css">
+  <link rel="stylesheet" href="/ray.css">
+</head>
+<body class="home">
+  <header class="site-head">
+    <div class="wrap head-in">
+      <a class="brand" href="/">Yunji Tech</a>
+      <nav>
+        <a class="active" href="#ray-series">Ray · KubeRay</a>
+        <a href="#articles">Engineering</a>
+        <a href="/resume.html">1 Page Resume</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero-feature wrap">
+      <a class="feature-card" href="/post.html?slug=kuberay-architecture">
+        <div class="feature-copy">
+          <span class="article-kind">LLMOPS · RAY · KUBERAY</span>
+          <h1>Kubernetes 위에서 Ray를<br>운영하는 세 가지 방법</h1>
+          <p>RayCluster, RayJob, RayService를 워크로드 수명주기와 운영 책임 기준으로 비교합니다.</p>
+          <div class="byline">Yunji · ML Platform Engineering Notes</div>
+        </div>
+        <div class="feature-art ray-art" aria-hidden="true">
+          <div class="ray-grid"></div>
+          <div class="ray-core">RAY<br><small>CLUSTER</small></div>
+          <div class="ray-pill r1"><b>RayJob</b><span>TRAIN · BATCH</span></div>
+          <div class="ray-pill r2"><b>RayService</b><span>SERVE · API</span></div>
+          <div class="ray-pill r3"><b>Metrics</b><span>OBSERVE</span></div>
+          <i class="ray-link rl1"></i><i class="ray-link rl2"></i><i class="ray-link rl3"></i>
+          <span class="ray-signal s1"></span><span class="ray-signal s2"></span>
+        </div>
+      </a>
+    </section>
+
+    <section class="focus-area wrap" id="ray-series">
+      <div class="section-title focus-title">
+        <div><span class="section-eyebrow">FEATURED LLMOPS NOTES</span><h2>먼저 읽을 글</h2></div>
+        <p>학습 · 서빙 · 관측성으로 이어지는 Ray 운영 흐름</p>
+      </div>
+      <div class="focus-grid">
+        <a class="focus-card train" href="/post.html?slug=ray-train-pytorch-kuberay"><span>01 · DISTRIBUTED TRAINING</span><h3>Ray Train으로 PyTorch<br>분산 학습 실행하기</h3><p>worker, GPU, 체크포인트와 스토리지를 학습 코드에서 분리한다.</p><b>Ray Train · PyTorch →</b></a>
+        <a class="focus-card serve" href="/post.html?slug=kuberay-rayservice"><span>02 · MODEL SERVING</span><h3>RayService로 모델 서빙을<br>Kubernetes에서 운영하기</h3><p>Serve 애플리케이션과 클러스터 수명주기를 하나의 CR로 관리한다.</p><b>Ray Serve · RayService →</b></a>
+        <a class="focus-card observe" href="/post.html?slug=kuberay-prometheus-grafana"><span>03 · OBSERVABILITY</span><h3>KubeRay 메트릭을<br>끝까지 관측하기</h3><p>PodMonitor, ServiceMonitor, Recording Rule과 Grafana를 연결한다.</p><b>Prometheus · Grafana →</b></a>
+      </div>
+    </section>
+
+    <section class="article-area wrap" id="articles">
+      <div class="section-title article-title-row">
+        <div><span class="section-eyebrow">ALL ENGINEERING NOTES</span><h2>전체 아티클</h2></div>
+        <div class="filters">
+          <button class="active" data-filter="all">전체</button><button data-filter="ray">Ray · KubeRay</button><button data-filter="network">Network</button><button data-filter="transport">Transport</button><button data-filter="voice">Voice</button><button data-filter="ops">Operations</button><button data-filter="ai">AI · Infra</button>
+        </div>
+      </div>
+
+      <div class="editorial-list" id="article-list">
+        <a class="editorial-row" data-cat="ray" href="/post.html?slug=kuberay-architecture"><div class="row-copy"><span>KubeRay · Architecture</span><h3>RayCluster·RayJob·RayService, 무엇을 언제 선택할까</h3><p>워크로드 수명주기와 운영 책임을 기준으로 KubeRay의 세 가지 핵심 리소스를 비교한다.</p><small>RayCluster · RayJob · RayService · Architecture</small></div><div class="row-thumb thumb-ray"><b>3 CRDs</b><em>Choose by lifecycle</em></div></a>
+        <a class="editorial-row" data-cat="ray" href="/post.html?slug=ray-train-pytorch-kuberay"><div class="row-copy"><span>Ray Train</span><h3>Ray Train으로 PyTorch 분산 학습 실행하기</h3><p>단일 노드 학습 코드를 TorchTrainer 기반 분산 학습으로 확장하고 KubeRay에서 실행한다.</p><small>PyTorch · Distributed Training · Checkpoint</small></div><div class="row-thumb thumb-violet"><b>TRAIN</b><em>Scale workers</em></div></a>
+        <a class="editorial-row" data-cat="ray" href="/post.html?slug=kuberay-rayservice"><div class="row-copy"><span>KubeRay · Serving</span><h3>RayService로 Ray Serve를 Kubernetes에서 운영하기</h3><p>Ray Serve 애플리케이션과 RayCluster 수명주기를 RayService CR 하나로 관리한다.</p><small>RayService · Ray Serve · Zero Downtime</small></div><div class="row-thumb thumb-serve"><b>SERVE</b><em>Long-running API</em></div></a>
+        <a class="editorial-row" data-cat="ray" href="/post.html?slug=kuberay-prometheus-grafana"><div class="row-copy"><span>KubeRay · Observability</span><h3>KubeRay 메트릭을 Prometheus와 Grafana로 관측하기</h3><p>RayCluster와 Operator의 메트릭을 대시보드, Recording Rule, Alert로 연결한다.</p><small>PodMonitor · ServiceMonitor · Grafana</small></div><div class="row-thumb thumb-observe"><b>OBSERVE</b><em>Metrics to alerts</em></div></a>
+        <a class="editorial-row" data-cat="ray" href="/post.html?slug=ray-nccl-infiniband-rdma"><div class="row-copy"><span>Ray · GPU Infrastructure</span><h3>KubeRay에서 NCCL·InfiniBand RDMA 검증하기</h3><p>호스트, Pod, NCCL 순서로 멀티노드 GPU 통신이 실제 RDMA 경로를 타는지 검증한다.</p><small>NCCL · InfiniBand · RDMA · DeepSpeed</small></div><div class="row-thumb thumb-rdma"><b>RDMA</b><em>GPU fabric</em></div></a>
+        <a class="editorial-row" data-cat="ray" href="/post.html?slug=ray-serve-model-composition"><div class="row-copy"><span>Ray Serve</span><h3>Ray Serve로 모델 서빙 파이프라인 구성하기</h3><p>모델을 Deployment로 바꾸고 여러 모델을 독립 확장 가능한 파이프라인으로 연결한다.</p><small>Model Serving · Composition · FastAPI</small></div><div class="row-thumb thumb-serve"><b>COMPOSE</b><em>Model pipeline</em></div></a>
+        <a class="editorial-row" data-cat="ray" href="/post.html?slug=ray-data-streaming-pipeline"><div class="row-copy"><span>Ray Data</span><h3>Ray Data의 스트리밍 실행 모델 이해하기</h3><p>Dataset, Block, Operator와 실행 계획을 따라가며 ingest와 배치 추론을 이해한다.</p><small>Streaming · Batch Inference · Ingest</small></div><div class="row-thumb thumb-data"><b>DATA</b><em>Streaming blocks</em></div></a>
+        <a class="editorial-row" data-cat="ray" href="/post.html?slug=kuberay-rayjob"><div class="row-copy"><span>KubeRay · Batch</span><h3>RayJob으로 일회성 분산 작업 운영하기</h3><p>클러스터 생성, job submission, 상태 추적과 완료 후 자동 정리까지 연결한다.</p><small>RayJob · Batch · Lifecycle · TTL</small></div><div class="row-thumb thumb-blue"><b>JOB</b><em>Run to completion</em></div></a>
+        <a class="editorial-row" data-cat="ray" href="/post.html?slug=kuberay-raycluster"><div class="row-copy"><span>KubeRay · Cluster</span><h3>KubeRay RayCluster 설치부터 Job 제출까지</h3><p>Operator와 RayCluster CR을 설치하고 실행, 외부 제출, Dashboard 접근까지 이어간다.</p><small>RayCluster · Kubernetes · Autoscaling</small></div><div class="row-thumb thumb-ray"><b>CLUSTER</b><em>Head + workers</em></div></a>
+        <a class="editorial-row" data-cat="ray" href="/post.html?slug=ray-core-tasks-actors-objects"><div class="row-copy"><span>Ray Core</span><h3>Ray Core의 Tasks·Actors·Objects 이해하기</h3><p>분산 실행의 기본 단위와 Placement Group의 역할을 코드 중심으로 연결한다.</p><small>Tasks · Actors · Object Store</small></div><div class="row-thumb thumb-indigo"><b>CORE</b><em>Distributed primitives</em></div></a>
+        <a class="editorial-row" data-cat="ray" href="/post.html?slug=ray-getting-started"><div class="row-copy"><span>Ray · Overview</span><h3>Ray 생태계 한 번에 이해하기</h3><p>Core와 Data, Train, Tune, Serve가 ML 수명주기에서 어떤 역할을 맡는지 살펴본다.</p><small>Ray Core · Data · Train · Serve</small></div><div class="row-thumb thumb-sky"><b>RAY</b><em>AI runtime map</em></div></a>
+        <a class="editorial-row" data-cat="ray" href="/post.html?slug=ray-cli-istio-virtualservice"><div class="row-copy"><span>KubeRay · Networking</span><h3>Istio VirtualService로 Ray CLI 외부 접속 구성하기</h3><p>클러스터 밖의 CLI가 Dashboard와 Job Submission API에 접근하도록 경로를 나눈다.</p><small>Istio · VirtualService · Job API</small></div><div class="row-thumb thumb-istio"><b>ISTIO</b><em>CLI ingress</em></div></a>
+        <a class="editorial-row" data-cat="ray" href="/post.html?slug=ray-cluster-key-concepts"><div class="row-copy"><span>Ray · Cluster</span><h3>Ray Cluster의 Head·Worker·Autoscaling 핵심 개념</h3><p>Head Node, Worker Node, Autoscaler와 Ray Job의 관계를 가장 작은 단위로 설명한다.</p><small>Head Node · Worker Node · Autoscaling</small></div><div class="row-thumb thumb-cyan"><b>HEAD</b><em>Control plane</em></div></a>
+
+        <a class="editorial-row" data-cat="network" href="/posts/ip-network-overview.html"><div class="row-copy"><span>Network</span><h3>IP망 백본 정보 개요</h3><p>Internet, AS, BGP, Route Selection, Flow, Security까지 백본 IP망을 따라가며 정리한 노트</p><small>Routing · BGP · OSPF · IS-IS</small></div><div class="row-thumb thumb-blue"><b>BGP</b><em>40 chapters</em></div></a>
+        <a class="editorial-row" data-cat="transport" href="/posts/transport-operations.html"><div class="row-copy"><span>Transport</span><h3>전송망 운용</h3><p>광통신 원리부터 Loss/Gain, OTDR, MSPP, ROADM, WSS, OTN과 보호절체까지</p><small>Optical · WDM · ROADM · OTN</small></div><div class="row-thumb thumb-cyan"><b>λ</b><em>Optical Network</em></div></a>
+        <a class="editorial-row" data-cat="network" href="/posts/ip-backbone-solution.html"><div class="row-copy"><span>Network</span><h3>IP백본망 솔루션</h3><p>OSI 계층, DHCP/DNS, IPTV Multicast, Routing Protocol과 MPLS를 서비스 흐름으로 연결하기</p><small>DHCP · IPTV · MPLS</small></div><div class="row-thumb thumb-indigo"><b>IP</b><em>Service Flow</em></div></a>
+        <a class="editorial-row" data-cat="transport" href="/posts/transport-solution.html"><div class="row-copy"><span>Transport</span><h3>전송망 솔루션</h3><p>전송장비 Lifecycle, 광통신과 WDM/ROADM/OTN, 백본 용량 설계의 기본 개념</p><small>WDM · PTN · OTN</small></div><div class="row-thumb thumb-purple"><b>OTN</b><em>Core Transport</em></div></a>
+        <a class="editorial-row" data-cat="transport" href="/posts/transport-engineering-core.html"><div class="row-copy"><span>Transport</span><h3>전송망 Eng. (기간망)</h3><p>SNCP, BLSR, Linear Protection과 PTN/ROADM/OTN 기반 기간망 보호 구조</p><small>Protection · PTN · ROADM</small></div><div class="row-thumb thumb-orange"><b>50ms</b><em>Protection</em></div></a>
+        <a class="editorial-row" data-cat="transport" href="/posts/transport-engineering-b2b.html"><div class="row-copy"><span>Transport</span><h3>전송망 Eng. (B2B)</h3><p>SDH → MSPP → PTN → POTN으로 이어지는 B2B 전용회선 전송 구조</p><small>SDH · MSPP · POTN</small></div><div class="row-thumb thumb-gray"><b>B2B</b><em>Private Line</em></div></a>
+        <a class="editorial-row" data-cat="transport" href="/posts/submarine-cable.html"><div class="row-copy"><span>Transport</span><h3>해저케이블 Engineering</h3><p>Landing Station, Fiber Pair, Repeater, PFE, Branching Unit, 포설과 유지보수</p><small>Submarine · Fiber Pair · PFE</small></div><div class="row-thumb thumb-ocean"><b>FP</b><em>Submarine Cable</em></div></a>
+        <a class="editorial-row" data-cat="voice" href="/posts/voice-network.html"><div class="row-copy"><span>Voice</span><h3>전화망의 이해</h3><p>PSTN에서 SoftSwitch, IMS로 이동하면서 신호와 미디어가 어떻게 분리됐는지</p><small>PSTN · SIP · RTP · IMS</small></div><div class="row-thumb thumb-green"><b>IMS</b><em>All IP</em></div></a>
+        <a class="editorial-row" data-cat="voice" href="/posts/voip-solution.html"><div class="row-copy"><span>Voice</span><h3>VoIP망 솔루션 / Engineering</h3><p>E1에서 All-IP로, 긴급통화 위치 라우팅과 QoS, 국사 이중화까지</p><small>VoIP · QoS · Emergency Call</small></div><div class="row-thumb thumb-lime"><b>SIP</b><em>Voice over IP</em></div></a>
+        <a class="editorial-row" data-cat="voice" href="/posts/pstn-solution.html"><div class="row-copy"><span>Voice</span><h3>PSTN망 솔루션 / Engineering</h3><p>C4/C5/Tandem, CDR와 과금, 상호접속료, DID/DOD, E1/T1, 지능망 구조</p><small>PSTN · SS7 · ISUP</small></div><div class="row-thumb thumb-rose"><b>SS7</b><em>Legacy Voice</em></div></a>
+        <a class="editorial-row" data-cat="voice" href="/posts/intelligent-network.html"><div class="row-copy"><span>Voice</span><h3>지능망 솔루션 / Engineering</h3><p>대표번호, 번호번역, 착신과금 등 전화 부가서비스 제어 구조</p><small>SCP · SSP · Number Translation</small></div><div class="row-thumb thumb-pink"><b>IN</b><em>Intelligent Network</em></div></a>
+        <a class="editorial-row" data-cat="ops" href="/posts/tango-cess.html"><div class="row-copy"><span>Operations</span><h3>Tango CESS 선로 비상 복구</h3><p>FDF 선번, OTDR, GIS/설비 데이터를 이용해 단선 후보 구간을 좁혀가는 과정</p><small>Fiber · OTDR · Recovery</small></div><div class="row-thumb thumb-yellow"><b>OTDR</b><em>Recovery</em></div></a>
+        <a class="editorial-row" data-cat="ops" href="/posts/subscriber-lifecycle.html"><div class="row-copy"><span>Operations</span><h3>가입 / 장애 / 해지 라이프사이클</h3><p>가입 가능 판단에서 개통, 원격진단, 현장 AS와 자원 반환까지</p><small>Provisioning · Trouble · Termination</small></div><div class="row-thumb thumb-mint"><b>E2E</b><em>Lifecycle</em></div></a>
+        <a class="editorial-row" data-cat="voice" href="/post.html?slug=voip-ssw-ipphone"><div class="row-copy"><span>Voice · Practice</span><h3>단말 접속 실습 (VoIP / SSW / IP Phone)</h3><p>VoIP 단말 접속과 SoftSwitch 흐름을 정리한 실습 노트</p><small>SIP · SSW · IP Phone</small></div><div class="row-thumb thumb-sky"><b>SIP</b><em>Practice</em></div></a>
+        <a class="editorial-row" data-cat="ai" href="/posts/build-platform.html"><div class="row-copy"><span>AI · Infrastructure</span><h3>Kaniko 기반 Build Platform</h3><p>Kubernetes에서 Build API, Container Image, Queue와 실패 상태를 운영한 기록</p><small>Kubernetes · Kaniko · Registry</small></div><div class="row-thumb thumb-black"><b>K8s</b><em>Build Platform</em></div></a>
+        <a class="editorial-row" data-cat="ai" href="/posts/distributed-training.html"><div class="row-copy"><span>AI · Infrastructure</span><h3>Multi-node GPU Distributed Training</h3><p>H100, MPIJob, Horovod, NCCL을 이용한 멀티노드 분산 학습</p><small>GPU · NCCL · MPI</small></div><div class="row-thumb thumb-violet"><b>6.92×</b><em>10 GPUs</em></div></a>
+      </div>
+    </section>
+
+    <section class="series-area" id="series">
+      <div class="wrap">
+        <div class="section-title"><div><span class="section-eyebrow">TOPIC MAP</span><h2>시리즈</h2></div></div>
+        <div class="series-grid">
+          <a href="#ray-series" class="series-card featured-series"><span>01</span><h3>Ray & KubeRay</h3><p>분산 실행, 학습, 데이터, 서빙과 Kubernetes 운영</p><b>13개 글 보기 →</b></a>
+          <a href="#articles" class="series-card"><span>02</span><h3>ML Platform</h3><p>Kubernetes, GPU와 빌드·배포 시스템</p><b>보러가기 →</b></a>
+          <a href="#articles" class="series-card"><span>03</span><h3>Network Fundamentals</h3><p>IP, Routing, Backbone과 서비스 흐름</p><b>보러가기 →</b></a>
+          <a href="#articles" class="series-card"><span>04</span><h3>Transport Network</h3><p>광통신, WDM, ROADM, OTN과 보호절체</p><b>보러가기 →</b></a>
+          <a href="#articles" class="series-card"><span>05</span><h3>Voice & IMS</h3><p>PSTN, VoIP, SoftSwitch, IMS와 지능망</p><b>보러가기 →</b></a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer><div class="wrap foot"><div><b>Yunji Tech</b><p>Ray · KubeRay · LLMOps · Engineering Notes</p></div><a href="/resume.html">1 Page Resume ↗</a></div></footer>
+  <script>
+    document.querySelectorAll('.filters button').forEach(btn => btn.addEventListener('click', () => {
+      document.querySelectorAll('.filters button').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      const filter = btn.dataset.filter;
+      document.querySelectorAll('.editorial-row').forEach(row => {
+        row.hidden = filter !== 'all' && row.dataset.cat !== filter;
+      });
+    }));
+  </script>
+</body>
+</html>

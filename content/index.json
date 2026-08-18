@@ -1,1 +1,183 @@
-[{"slug":"voip-ssw-ipphone","title":"[심화교육] 단말 접속 실습(VoIP_SSW_IP폰)","date":"2026-04-23","category":"Voice / IMS"}]
+[
+  {
+    "slug": "ray-nccl-infiniband-rdma",
+    "title": "KubeRay에서 NCCL·InfiniBand RDMA 검증하기",
+    "date": "2025-12-11",
+    "category": "Ray / GPU Infrastructure",
+    "excerpt": "Ray는 오케스트레이션을 맡고 실제 GPU 간 통신은 NCCL과 InfiniBand가 담당하는 구조를 단계별로 검증한다.",
+    "tags": [
+      "KubeRay",
+      "NCCL",
+      "InfiniBand",
+      "RDMA"
+    ]
+  },
+  {
+    "slug": "ray-serve-model-composition",
+    "title": "Ray Serve로 모델 서빙 파이프라인 구성하기",
+    "date": "2025-12-03",
+    "category": "Ray Serve",
+    "excerpt": "모델을 Deployment로 바꾸고 여러 모델을 독립적으로 스케일링 가능한 서빙 파이프라인으로 연결한다.",
+    "tags": [
+      "Ray Serve",
+      "Model Serving",
+      "Composition",
+      "FastAPI"
+    ]
+  },
+  {
+    "slug": "ray-train-pytorch-kuberay",
+    "title": "Ray Train으로 PyTorch 분산 학습 실행하기",
+    "date": "2025-12-02",
+    "category": "Ray Train",
+    "excerpt": "단일 노드 PyTorch 코드를 TorchTrainer 기반 분산 학습으로 확장하고 KubeRay에서 실행하는 흐름을 정리한다.",
+    "tags": [
+      "Ray Train",
+      "PyTorch",
+      "Distributed Training",
+      "Checkpoint"
+    ]
+  },
+  {
+    "slug": "ray-core-tasks-actors-objects",
+    "title": "Ray Core의 Tasks·Actors·Objects 이해하기",
+    "date": "2025-12-01",
+    "category": "Ray Core",
+    "excerpt": "분산 실행의 기본 단위인 Task, Actor, Object와 Placement Group의 역할을 코드 중심으로 연결한다.",
+    "tags": [
+      "Ray Core",
+      "Tasks",
+      "Actors",
+      "Object Store"
+    ]
+  },
+  {
+    "slug": "ray-getting-started",
+    "title": "Ray 생태계 한 번에 이해하기",
+    "date": "2025-12-01",
+    "category": "Ray / Overview",
+    "excerpt": "Ray Core와 AI Libraries가 데이터 처리부터 학습·튜닝·서빙까지 어떻게 이어지는지 전체 지도를 만든다.",
+    "tags": [
+      "Ray",
+      "Ray Data",
+      "Ray Train",
+      "Ray Serve"
+    ]
+  },
+  {
+    "slug": "ray-data-streaming-pipeline",
+    "title": "Ray Data의 스트리밍 실행 모델 이해하기",
+    "date": "2025-12-01",
+    "category": "Ray Data",
+    "excerpt": "Dataset과 Block, Operator와 실행 계획을 따라가며 학습 ingest와 배치 추론 파이프라인을 이해한다.",
+    "tags": [
+      "Ray Data",
+      "Streaming",
+      "Batch Inference",
+      "Ingest"
+    ]
+  },
+  {
+    "slug": "kuberay-prometheus-grafana",
+    "title": "KubeRay 메트릭을 Prometheus와 Grafana로 관측하기",
+    "date": "2025-11-27",
+    "category": "KubeRay / Observability",
+    "excerpt": "RayCluster와 KubeRay Operator의 메트릭을 수집하고 대시보드·Recording Rule·Alert로 연결하는 운영 구성을 다룬다.",
+    "tags": [
+      "KubeRay",
+      "Prometheus",
+      "Grafana",
+      "Monitoring"
+    ]
+  },
+  {
+    "slug": "kuberay-rayservice",
+    "title": "RayService로 Ray Serve를 Kubernetes에서 운영하기",
+    "date": "2025-11-26",
+    "category": "KubeRay / Serving",
+    "excerpt": "Ray Serve 애플리케이션과 RayCluster 수명주기를 RayService CR 하나로 관리하는 과정을 실습한다.",
+    "tags": [
+      "RayService",
+      "Ray Serve",
+      "Kubernetes",
+      "Zero Downtime"
+    ]
+  },
+  {
+    "slug": "kuberay-rayjob",
+    "title": "RayJob으로 일회성 분산 작업 운영하기",
+    "date": "2025-11-25",
+    "category": "KubeRay / Batch",
+    "excerpt": "클러스터 생성부터 job submission, 상태 추적, 완료 후 자동 정리까지 RayJob의 수명주기를 살펴본다.",
+    "tags": [
+      "RayJob",
+      "KubeRay",
+      "Batch",
+      "Lifecycle"
+    ]
+  },
+  {
+    "slug": "ray-cli-istio-virtualservice",
+    "title": "Istio VirtualService로 Ray CLI 외부 접속 구성하기",
+    "date": "2025-11-20",
+    "category": "KubeRay / Networking",
+    "excerpt": "클러스터 밖의 Ray CLI가 Dashboard와 Job Submission API에 안전하게 접근하도록 라우팅을 구성한다.",
+    "tags": [
+      "Istio",
+      "Ray CLI",
+      "VirtualService",
+      "Job API"
+    ]
+  },
+  {
+    "slug": "kuberay-architecture",
+    "title": "RayCluster·RayJob·RayService, 무엇을 언제 선택할까",
+    "date": "2025-11-19",
+    "category": "KubeRay / Architecture",
+    "excerpt": "워크로드 수명주기와 운영 책임을 기준으로 KubeRay의 세 가지 핵심 리소스를 비교한다.",
+    "tags": [
+      "RayCluster",
+      "RayJob",
+      "RayService",
+      "Architecture"
+    ]
+  },
+  {
+    "slug": "kuberay-raycluster",
+    "title": "KubeRay RayCluster 설치부터 Job 제출까지",
+    "date": "2025-11-19",
+    "category": "KubeRay / Cluster",
+    "excerpt": "KubeRay Operator와 RayCluster CR을 설치하고 애플리케이션 실행·외부 제출·대시보드 접근까지 이어간다.",
+    "tags": [
+      "RayCluster",
+      "Kubernetes",
+      "Autoscaling",
+      "Ray Dashboard"
+    ]
+  },
+  {
+    "slug": "ray-cluster-key-concepts",
+    "title": "Ray Cluster의 Head·Worker·Autoscaling 핵심 개념",
+    "date": "2025-11-18",
+    "category": "Ray / Cluster",
+    "excerpt": "Ray 클러스터를 구성하는 Head Node, Worker Node, Autoscaler와 Job의 관계를 가장 작은 개념 단위로 설명한다.",
+    "tags": [
+      "Ray Cluster",
+      "Head Node",
+      "Worker Node",
+      "Autoscaling"
+    ]
+  },
+  {
+    "slug": "voip-ssw-ipphone",
+    "title": "[심화교육] 단말 접속 실습(VoIP_SSW_IP폰)",
+    "date": "2026-04-23",
+    "category": "Voice / IMS",
+    "excerpt": "VoIP 단말 접속과 SoftSwitch 흐름을 정리한 실습 노트",
+    "tags": [
+      "SIP",
+      "SSW",
+      "IP Phone"
+    ]
+  }
+]
